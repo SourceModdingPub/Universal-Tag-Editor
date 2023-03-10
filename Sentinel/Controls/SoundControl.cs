@@ -157,6 +157,7 @@ namespace Sentinel.Controls
 
                             for (int i = 0; i < permutationCount; i++)
                             {
+                                //ConvertGen3Sound(GameCache cache, SoundCacheFileGestalt soundGestalt, Sound sound, int pitchRangeIndex, int permutationIndex, byte[] data, Compression targetFormat, bool useSoundCache, string soundCachePath, string tagName)
                                 BlamSound blamSound = SoundConverter.ConvertGen3Sound(cache, blamSoundGestalt, definition, relativePitchRangeIndex, i, soundData);
 
                                 output.WriteBlock(blamSound.Data);

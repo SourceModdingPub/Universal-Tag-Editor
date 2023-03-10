@@ -330,7 +330,7 @@ namespace Sentinel.Render
                         {
                             var material = Materials[part.MaterialIndex];
 
-                            Device.RenderState.AlphaBlendEnable = (part.TypeNew == TagTool.Geometry.Mesh.Part.PartTypeNew.Transparent);
+                            Device.RenderState.AlphaBlendEnable = (part.TypeNew == TagTool.Geometry.Part.PartTypeNew.Transparent);
 
                             foreach (var entry in material.Textures)
                             {

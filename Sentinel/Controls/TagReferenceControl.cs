@@ -91,7 +91,7 @@ namespace Sentinel.Controls
 
                 var tagName = tag.Name ?? $"0x{tag.Index:X4}";
 
-                textBox.Text = $"{tagName}.{Cache.StringTable.GetString(tag.Group.Name)}";
+                textBox.Text = $"{tagName}.{Cache.StringTable.GetString(tag.ID)}";
             }
         }
 
