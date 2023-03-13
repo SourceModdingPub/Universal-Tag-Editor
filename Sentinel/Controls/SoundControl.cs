@@ -153,11 +153,11 @@ namespace Sentinel.Controls
                         for (int pitchRangeIndex = definition.SoundReference.PitchRangeIndex; pitchRangeIndex < definition.SoundReference.PitchRangeIndex + definition.SoundReference.PitchRangeCount; pitchRangeIndex++)
                         {
                             var relativePitchRangeIndex = pitchRangeIndex - definition.SoundReference.PitchRangeIndex;
-                            var permutationCount = blamSoundGestalt.GetPermutationCount(pitchRangeIndex);
+                            var permutationCount = blamSoundGestalt.GetPermutationChunk(pitchRangeIndex);
 
-                            for (int i = 0; i < permutationCount; i++)
+                            //for (int i = 0; i < permutationCount; i++)
                             {
-                                BlamSound blamSound = SoundConverter.ConvertGen3Sound(cache, blamSoundGestalt, definition, relativePitchRangeIndex, i, soundData);
+                                BlamSound blamSound = SoundConverter.ConvertGen3Sound(cache, blamSoundGestalt, definition, relativePitchRangeIndex, soundData);
 
                                 output.WriteBlock(blamSound.Data);
                             }
