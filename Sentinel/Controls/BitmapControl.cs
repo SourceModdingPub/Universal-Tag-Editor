@@ -38,7 +38,7 @@ namespace Sentinel.Controls
 
             DevIL.ilBindImage(img_name);
 
-            var ddsData = BitmapExtractor.ExtractBitmapToDDSArray(cache, Bitmap, 0);
+            var ddsData = BitmapExtractor.ExtractBitmapData(cache, Bitmap, 0);
 
             // Load the DDS file into the bound DevIL image
             DevIL.ilLoadL(DevIL.IL_DDS, ddsData, ddsData.Length);
@@ -80,7 +80,7 @@ namespace Sentinel.Controls
                     format == TagTool.Bitmaps.BitmapFormat.AY8 ||
                     format == TagTool.Bitmaps.BitmapFormat.A8Y8 ||
                     format == TagTool.Bitmaps.BitmapFormat.A8R8G8B8 ||
-                    format == TagTool.Bitmaps.BitmapFormat.A16B16G16R16 ||
+                    //format == TagTool.Bitmaps.BitmapFormat.A16B16G16R16 ||
                     format == TagTool.Bitmaps.BitmapFormat.A16B16G16R16F ||
                     format == TagTool.Bitmaps.BitmapFormat.A1R5G5B5 ||
                     format == TagTool.Bitmaps.BitmapFormat.A2R10G10B10 ||

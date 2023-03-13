@@ -178,6 +178,10 @@ namespace TagTool.Audio
             }
         }
 
+        public static BlamSound ConvertGen3Sound(GameCache cache, SoundCacheFileGestalt blamSoundGestalt, Sound definition, int relativePitchRangeIndex, int i, byte[] soundData)
+        {
+            throw new NotImplementedException();
+        }
 
         public static BlamSound ConvertGen3Sound(GameCache cache, SoundCacheFileGestalt soundGestalt, Sound sound, int pitchRangeIndex, int permutationIndex, byte[] data, Compression targetFormat, bool useSoundCache, string soundCachePath, string tagName)
         {

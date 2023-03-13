@@ -110,6 +110,10 @@ namespace TagTool.Cache.ModPackages
                 resource.DisableChecksum();
             }
         }
-        
+
+        public override object GetBitmapTextureInteropResource(object value)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

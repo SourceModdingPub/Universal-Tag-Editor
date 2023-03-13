@@ -119,5 +119,15 @@ namespace TagTool.Cache.HaloOnline
                 file.CopyTo(modFileStream);
             }
         }
+
+        public override bool TryGetTag(string text, out object tag)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool TryParseGroupTag(string value, out object tag)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
