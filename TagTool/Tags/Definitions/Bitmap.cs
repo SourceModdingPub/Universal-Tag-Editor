@@ -68,6 +68,8 @@ namespace TagTool.Tags.Definitions
         [TagField(MinVersion = CacheVersion.HaloOnlineED, MaxVersion = CacheVersion.HaloOnline700123)]
         public int UnknownB4;
 
+        public object Resources { get; set; }
+
         public enum BitmapUsageGlobalEnum : int
         {
             DiffuseMap,

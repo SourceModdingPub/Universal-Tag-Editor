@@ -231,6 +231,16 @@ namespace TagTool.Cache
             throw new NotImplementedException();
         }
 
+        public override bool TryGetTag(string text, out object tag)
+        {
+            return VistaSharedTagCache.TryGetTag(text, out tag);
+        }
+
+        public override bool TryParseGroupTag(string value, out object tag)
+        {
+            return VistaSharedTagCache.TryParseGroupTag(value, out tag);
+        }
+
         // Purpose: to opaquely manage the lifetime of the shared cache stream
         internal class Gen2CacheStream : Stream
         {

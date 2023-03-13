@@ -89,6 +89,12 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.VisualC" />
+    <Reference Include="SharpDX, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.4.2.0\lib\net45\SharpDX.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpDX.Direct3D9, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.Direct3D9.4.2.0\lib\net45\SharpDX.Direct3D9.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="Microsoft.CSharp" />
@@ -231,12 +237,6 @@
     <Compile Include="Controls\StructMultiControl.Designer.cs">
       <DependentUpon>StructMultiControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controls\SoundControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\SoundControl.Designer.cs">
-      <DependentUpon>SoundControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controls\StringIdControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -286,6 +286,7 @@
     <Compile Include="Forms\SelectMapForm.Designer.cs">
       <DependentUpon>SelectMapForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\SoundControl.cs" />
     <Compile Include="Forms\StringIdDialog.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -334,8 +335,6 @@
     <Compile Include="Render\VertexDefinitions\WorldVertexDefinition.cs" />
     <Compile Include="Render\RenderCamera.cs" />
     <Compile Include="Render\RenderMaterial.cs" />
-    <Compile Include="Render\RenderObject.cs" />
-    <Compile Include="Render\RenderTexture.cs" />
     <EmbeddedResource Include="Controls\ArgbColorControl.resx">
       <DependentUpon>ArgbColorControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -402,9 +401,6 @@
     <EmbeddedResource Include="Controls\StructMultiControl.resx">
       <DependentUpon>StructMultiControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Controls\SoundControl.resx">
-      <DependentUpon>SoundControl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Controls\StringIdControl.resx">
       <DependentUpon>StringIdControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -445,6 +441,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

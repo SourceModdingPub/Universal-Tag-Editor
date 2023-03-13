@@ -365,19 +365,6 @@ namespace Sentinel.Forms
                 if (tag.IsInGroup("bitm"))
                 {
                     var bitmDefinition = (TagTool.Tags.Definitions.Bitmap)definition;
-
-                    if (Cache.ResourceCache.GetBitmapTextureInteropResource(bitmDefinition.Resources[0]) != null)
-                    {
-                        splitContainer.SplitterDistance = 384;
-
-                        var bitmapControl = new BitmapControl(Cache, bitmDefinition)
-                        {
-                            Dock = DockStyle.Fill
-                        };
-
-                        splitContainer.Panel1.Controls.Add(bitmapControl);
-                        bitmapControl.BringToFront();
-                    }
                 }
 
                 /*else if (tag.IsInGroup("obje"))
@@ -403,19 +390,6 @@ namespace Sentinel.Forms
             }
             else
             {
-                if (tag.IsInGroup("snd!"))
-                {
-                    var soundControl = new SoundControl(Cache, tag, (Sound)definition)
-                    {
-                        Dock = DockStyle.Top
-                    };
-
-                    tagEditorPanel.Controls.Add(soundControl);
-                    soundControl.BringToFront();
-
-                    point.Y = soundControl.Bottom;
-                }
-
                 var control = new StructControl(this, Cache, definition.GetType(), null);
                 control.GetFieldValue(null, definition, definition);
 
@@ -679,7 +653,7 @@ namespace Sentinel.Forms
             foreach (var entry in CurrentTags)
             {
                 Cache.TryGetTag("0x" + entry.Key.ToString("X"), out var tag); // hacky, works for now
-                message += $"\n{SaveTagChanges(tag, entry.Value)}";
+                message += $"\n{SaveTagChanges((CachedTag)tag, entry.Value)}";
             }
 
             MessageBox.Show(message, "Save Tag Changes", MessageBoxButtons.OK);

@@ -3,6 +3,8 @@ using System.Windows.Forms;
 using System.Reflection;
 using TagTool.Common;
 using TagTool.Cache;
+using TagTool.Tags;
+using TagTool.Commands;
 using Sentinel.Forms;
 using System.Drawing;
 
@@ -55,31 +57,6 @@ namespace Sentinel.Controls
             Loading = false;
         }
 
-        public void SetFieldValue(object owner, object value = null, object definition = null)
-        {
-            if (Loading || owner == null)
-                return;
-
-            if (value == null)
-            {
-                if (!Cache.TryGetTag(textBox.Text, out var tag))
-                {
-                    textBox.ForeColor = Color.Red;
-                    return;
-                }
-
-                textBox.ForeColor = SystemColors.WindowText;
-
-                value = tag;
-
-                var tagName = tag.Name ?? $"0x{tag.Index:X4}";
-
-                textBox.Text = $"{tagName}.{Cache.StringTable.GetString(tag.Group.Name)}";
-            }
-
-            Field.SetValue(owner, value);
-        }
-
         private void browseButton_Click(object sender, EventArgs e)
         {
             using (var td = new TagDialog(Cache))
@@ -91,30 +68,13 @@ namespace Sentinel.Controls
 
                 var tagName = tag.Name ?? $"0x{tag.Index:X4}";
 
-                textBox.Text = $"{tagName}.{Cache.StringTable.GetString(tag.Group.Name)}";
+                textBox.Text = $"{tagName}.{Cache.StringTable.GetString(tag.ID)}";
             }
-        }
-
-        private void openButton_Click(object sender, EventArgs e)
-        {
-            if (!Cache.TryGetTag(textBox.Text, out var tag))
-            {
-                textBox.ForeColor = Color.Red;
-                return;
-            }
-
-            textBox.ForeColor = SystemColors.WindowText;
-
-            var tagName = tag.Name ?? $"0x{tag.Index:X4}";
-
-            textBox.Text = $"{tagName}.{Cache.StringTable.GetString(tag.Group.Name)}";
-
-            Form.LoadTagEditor(tag);
         }
 
         private void textBox_TextChanged(object sender, EventArgs e)
         {
-            SetFieldValue(Owner);
+            GetFieldValue(Owner);
         }
 
         private void renameReferencedTag_Click(object sender, EventArgs e)
@@ -122,12 +82,17 @@ namespace Sentinel.Controls
             if (Owner == null)
                 return;
 
-            SetFieldValue(Owner);
+            GetFieldValue(Owner);
             var tag = (CachedTag)Field.GetValue(Owner);
 
             Form.RenameTag(tag);
 
             GetFieldValue(Owner);
+        }
+
+        public void SetFieldValue(object owner, object value = null, object definition = null)
+        {
+            throw new NotImplementedException();
         }
     }
 }

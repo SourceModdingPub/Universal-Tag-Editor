@@ -59,5 +59,10 @@ namespace TagTool.Cache.Gen2
         {
             throw new NotImplementedException();
         }
+
+        public override object GetString(object name)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

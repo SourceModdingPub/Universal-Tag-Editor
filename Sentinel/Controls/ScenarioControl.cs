@@ -22,7 +22,7 @@ namespace Sentinel.Controls
         public Scenario Definition { get; }
         public bool Initialized { get; private set; } = false;
 
-        public Dictionary<int, RenderObject> Objects { get; set; } = new Dictionary<int, RenderObject>();
+        //public Dictionary<int, RenderObject> Objects { get; set; } = new Dictionary<int, RenderObject>();
 
         public RenderCamera Camera { get; set; } = null;
         public Direct3D.Device Device { get; set; } = null;

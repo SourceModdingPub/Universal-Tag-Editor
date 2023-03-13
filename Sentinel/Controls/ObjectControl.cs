@@ -22,7 +22,7 @@ namespace Sentinel.Controls
         public GameObject Definition { get; }
         public bool Initialized { get; private set; } = false;
 
-        public RenderObject Instance { get; set; } = null;
+        //public RenderObject Instance { get; set; } = null;
 
         public RenderCamera Camera { get; set; } = null;
         public D3DDevice Device { get; set; } = null;
@@ -78,13 +78,13 @@ namespace Sentinel.Controls
             Device.DeviceReset += new EventHandler(OnResetDevice);
             OnResetDevice(Device, null);
 
-            Instance = new RenderObject(Device, Cache, Definition, new TagTool.Common.RealPoint3d(), new TagTool.Common.RealEulerAngles3d());
+            //Instance = new RenderObject(Device, Cache, Definition, new TagTool.Common.RealPoint3d(), new TagTool.Common.RealEulerAngles3d());
 
             if (Camera != null)
                 Camera.Dispose();
 
-            var compression = Instance.RenderModel.Geometry.Compression.Count > 0 ?
-                Instance.RenderModel.Geometry.Compression[0] :
+            //var compression = Instance.RenderModel.Geometry.Compression.Count > 0 ?
+            //    Instance.RenderModel.Geometry.Compression[0] :
                 new TagTool.Geometry.RenderGeometryCompression
                 {
                     X = new TagTool.Common.Bounds<float>(float.MinValue, float.MaxValue),
@@ -97,7 +97,7 @@ namespace Sentinel.Controls
             Camera = new RenderCamera(this)
             {
                 Speed = 0.005f,
-                Position = new Vector3(compression.X.Length + (Instance.Object.BoundingRadius * 2f), 0f, Instance.RenderModel.Nodes.FirstOrDefault().DefaultTranslation.Z),
+                //Position = new Vector3(compression.X.Length + (Instance.Object.BoundingRadius * 2f), 0f, Instance.RenderModel.Nodes.FirstOrDefault().DefaultTranslation.Z),
                 VerticalRadians = 6.161014f,
                 HorizontalRadians = 3.14159f
             };
@@ -142,7 +142,7 @@ namespace Sentinel.Controls
             Device.Transform.View = Matrix.LookAtRH(Camera.Position, Camera.Target, Camera.UpVector);
             Device.Transform.Projection = Matrix.PerspectiveFovRH(0.7f, ((float)Width / (float)Height), 0.01f, 1000.0f);
 
-            Instance.Render();
+            //Instance.Render();
 
             Device.EndScene();
             Device.Present();

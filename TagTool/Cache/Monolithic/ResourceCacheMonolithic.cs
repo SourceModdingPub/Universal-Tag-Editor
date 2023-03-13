@@ -133,5 +133,10 @@ namespace TagTool.Cache.Monolithic
                 }
             }
         }
+
+        public override object GetBitmapTextureInteropResource(object value)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

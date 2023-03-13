@@ -2103,6 +2103,11 @@ namespace Sentinel
         [DllImport(DEVIL_NATIVE_LIBRARY, CallingConvention = CALLING_CONVENTION), SuppressUnmanagedCodeSecurity]
         public static extern ILboolean ilSaveFromJpegStruct(IntPtr JpegCompressorPtr);
 
+        internal static void ilLoadL(int iL_DDS, object ddsData, object length)
+        {
+            throw new NotImplementedException();
+        }
+
         #endregion Externs
     }
 }

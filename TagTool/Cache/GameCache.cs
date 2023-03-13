@@ -122,6 +122,8 @@ namespace TagTool.Cache
             return null;
         }
 
+        public abstract bool TryGetTag(string text, out object tag);
+        public abstract bool TryParseGroupTag(string value, out object tag);
         public abstract void SaveStrings();
     }
 }

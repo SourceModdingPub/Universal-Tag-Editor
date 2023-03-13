@@ -1,4 +1,6 @@
-﻿namespace Sentinel.Controls
+﻿using System;
+
+namespace Sentinel.Controls
 {
     partial class TagReferenceControl
     {
@@ -116,5 +118,6 @@
         private System.Windows.Forms.Button openButton;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem renameReferencedTagToolStripMenuItem;
+        private EventHandler openButton_Click;
     }
 }

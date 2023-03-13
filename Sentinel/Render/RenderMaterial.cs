@@ -11,10 +11,11 @@ namespace Sentinel.Render
     public class RenderMaterial
     {
         public RenderMethod RenderMethod { get; }
-        public Dictionary<string, RenderTexture> Textures { get; }
+        //public Dictionary<string, RenderTexture> Textures { get; }
         public Direct3D.Effect Effect { get; }
+        public IEnumerable<object> Textures { get; internal set; }
 
-        public RenderMaterial(Direct3D.Device device, GameCache cache, TagTool.Geometry.RenderMaterial material)
+        public RenderMaterial (GameCache cache, TagTool.Geometry.RenderMaterial material)
         {
             if (material.RenderMethod == null)
                 return;
@@ -25,19 +26,19 @@ namespace Sentinel.Render
 
                 var template = cache.Deserialize<RenderMethodTemplate>(cacheStream, renderMethod.ShaderProperties[0].Template);
 
-                Textures = new Dictionary<string, RenderTexture>();
+                //Textures = new Dictionary<string, RenderTexture>();
 
                 for (var shaderMapIndex = 0; shaderMapIndex < renderMethod.ShaderProperties[0].TextureConstants.Count; shaderMapIndex++)
                 {
                     var shaderMapName = cache.StringTable.GetString(template.TextureParameterNames[shaderMapIndex].Name);
 
-                    if (Textures.ContainsKey(shaderMapName))
-                        continue;
+                   // if (Textures.ContainsKey(shaderMapName))
+                   //     continue;
 
                     var shaderMap = renderMethod.ShaderProperties[0].TextureConstants[shaderMapIndex];
                     var shaderMapDefinition = cache.Deserialize<Bitmap>(cacheStream, shaderMap.Bitmap);
 
-                    Textures[shaderMapName] = new RenderTexture(device, cache, shaderMapDefinition, shaderMap.BitmapIndex);
+                    //Textures[shaderMapName] = new RenderTexture(device, cache, shaderMapDefinition, shaderMap.BitmapIndex);
                 }
             }
         }
