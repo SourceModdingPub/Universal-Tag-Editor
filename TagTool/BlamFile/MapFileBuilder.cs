@@ -110,7 +110,7 @@ namespace TagTool.BlamFile
                     header.CacheType = CacheFileType.MainMenu;
                     break;
                 case ScenarioMapType.SinglePlayer:
-                    header.CacheType = CacheFileType.Campaign;
+                    header.CacheType = CacheFileType.Solo;
                     break;
                 case ScenarioMapType.Multiplayer:
                     header.CacheType = CacheFileType.Multiplayer;

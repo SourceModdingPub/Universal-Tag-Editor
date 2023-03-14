@@ -44,14 +44,15 @@ namespace TagTool.Cache
 
             switch (BaseMapFile.Header.GetCacheType())
             {
-                case CacheFileType.Campaign:
-                    SharedCacheType = CacheFileType.SharedCampaign;
+                case CacheFileType.Solo:
+                    SharedCacheType = CacheFileType.SingleplayerShared;
                     VistaSharedTagCacheName = "single_player_shared.map";
                     break;
                 case CacheFileType.Multiplayer:
-                case CacheFileType.MainMenu:    // see if this is necessary
-                    SharedCacheType = CacheFileType.Shared;
+                    SharedCacheType = CacheFileType.MultiplayerShared;
                     VistaSharedTagCacheName = "shared.map";
+                    break;
+                case CacheFileType.MainMenu:    // see if this is necessary
                     break;
             }
 

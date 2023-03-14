@@ -765,7 +765,7 @@ namespace TagTool.Cache
 
                 var type = ((CacheFileHeaderGenHaloOnline)map.Header).CacheType;
 
-                if (type == CacheFileType.Campaign)
+                if (type == CacheFileType.Solo)
                     Header.MapFlags |= MapFlags.CampaignMaps;
                 else if (type == CacheFileType.MainMenu)
                     Header.MapFlags |= MapFlags.MainmenuMaps;

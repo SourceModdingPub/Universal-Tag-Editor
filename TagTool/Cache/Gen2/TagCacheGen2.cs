@@ -77,8 +77,8 @@ namespace TagTool.Cache.Gen2
             CachePlatform = mapFile.CachePlatform;
 
             TagDefinitions = new TagDefinitionsGen2();
-            IsShared = mapFile.Header.GetCacheType() == CacheFileType.Shared || 
-                        mapFile.Header.GetCacheType() == CacheFileType.SharedCampaign;
+            IsShared = mapFile.Header.GetCacheType() == CacheFileType.MultiplayerShared || 
+                        mapFile.Header.GetCacheType() == CacheFileType.SingleplayerShared;
 
             var tagDataSectionOffset = (uint)mapFile.Header.GetTagTableHeaderOffset();
             reader.SeekTo(tagDataSectionOffset);

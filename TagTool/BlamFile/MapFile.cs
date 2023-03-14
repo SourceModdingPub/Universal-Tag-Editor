@@ -114,6 +114,18 @@ namespace TagTool.BlamFile
                 return false;
         }
 
+        private static bool IsGen4MCCFormat(EndianReader reader)
+        {
+            reader.SeekTo(0x120);
+            CacheVersion version = CacheVersion.Unknown;
+            CachePlatform platform = CachePlatform.All;
+            CacheVersionDetection.GetFromBuildName(reader.ReadString(0x20), ref version, ref platform);
+            if (platform == CachePlatform.MCC)
+                return true;
+            else
+                return false;
+        }
+
         private static bool IsModifiedReachFormat(EndianReader reader)
         {
             reader.SeekTo(0x120);

@@ -3,12 +3,12 @@
     public enum CacheFileType : short
     {
         None = -1,
-        Campaign,
+        Solo,
         Multiplayer,
         MainMenu,
-        Shared,
-        SharedCampaign,
-        Unknown5,
+        MultiplayerShared,
+        SingleplayerShared,
+        SoundsShared,
         Unknown6
     }
 }
