@@ -58,7 +58,7 @@ namespace Sentinel.Controls
 
             FieldInfo labelField = null;
 
-            var enumerator = TagStructure.GetTagFieldEnumerable(new TagStructureInfo((Field?.FieldType ?? value.GetType()).GenericTypeArguments[0], Struct.Cache.Version));
+            var enumerator = TagStructure.GetTagFieldEnumerable(info: new TagStructureInfo((Field?.FieldType ?? value.GetType()).GenericTypeArguments[0], Struct.Cache.Version));
             foreach (var fieldInfo in enumerator)
             {
                 if (fieldInfo.Attribute.Flags.HasFlag(TagFieldFlags.Label))
