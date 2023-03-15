@@ -1943,7 +1943,7 @@ namespace TagTool.Commands.Porting
         {
             switch (BlamCache.Version)
             {
-                case CacheVersion.Halo2Vista:
+                /*case CacheVersion.Halo2Vista:
                 case CacheVersion.Halo2Xbox:
                     if (flags.Halo2.ToString().Contains("Unknown"))
                     {
@@ -1957,7 +1957,7 @@ namespace TagTool.Commands.Porting
                     if (!Enum.TryParse(flags.Halo2.ToString(), out flags.Halo3ODST))
                         throw new FormatException(BlamCache.Version.ToString());
                     break;
-
+                */
                 case CacheVersion.Halo3Retail:
                     if (flags.Halo3Retail.ToString().Contains("Unknown"))
                     {
