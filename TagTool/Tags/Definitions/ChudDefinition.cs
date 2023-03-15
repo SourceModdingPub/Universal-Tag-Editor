@@ -17,6 +17,7 @@ namespace TagTool.Tags.Definitions
         [TagField(MinVersion = CacheVersion.HaloReach)]
         public List<NullBlock> CompiledWidgetData;
 
+        [TagStructure(Size = 0x50, MaxVersion = CacheVersion.Halo3Alpha)]
         [TagStructure(Size = 0x38, MaxVersion = CacheVersion.HaloOnline700123)]
         [TagStructure(Size = 0x78, MinVersion = CacheVersion.HaloReach, Platform = CachePlatform.Original)]
         [TagStructure(Size = 0x7C, MinVersion = CacheVersion.HaloReach, Platform = CachePlatform.MCC)]
@@ -74,8 +75,9 @@ namespace TagTool.Tags.Definitions
             public List<RenderDatumReach> RenderDataReach;
             [TagField(MaxVersion = CacheVersion.HaloOnline700123)]
             public List<RenderDatum> RenderData;
-           
 
+
+            [TagStructure(Size = 0x1C, MaxVersion = CacheVersion.Halo3Alpha)]
             [TagStructure(Size = 0x28, MaxVersion = CacheVersion.Halo3Retail)]
             [TagStructure(Size = 0x38, MaxVersion = CacheVersion.Halo3ODST)]
             [TagStructure(Size = 0x44, MaxVersion = CacheVersion.HaloOnline604673)]

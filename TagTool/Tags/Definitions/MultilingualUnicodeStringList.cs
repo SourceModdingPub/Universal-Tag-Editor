@@ -2,13 +2,16 @@ using TagTool.Common;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using TagTool.Cache;
 
 namespace TagTool.Tags.Definitions
 {
     /// <summary>
     /// Contains a list of localized strings.
     /// </summary>
-    [TagStructure(Name = "multilingual_unicode_string_list", Tag = "unic", Size = 0x50)]
+    /// 
+    [TagStructure(Name = "multilingual_unicode_string_list", Tag = "unic", Size = 0x44, MaxVersion = CacheVersion.Halo3Alpha)]
+    [TagStructure(Name = "multilingual_unicode_string_list", Tag = "unic", Size = 0x50, MaxVersion = CacheVersion.HaloReach)]
     public class MultilingualUnicodeStringList : TagStructure
 	{
         /// <summary>

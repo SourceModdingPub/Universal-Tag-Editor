@@ -7,6 +7,7 @@ using TagTool.Damage;
 
 namespace TagTool.Tags.Definitions
 {
+    [TagStructure(Name = "effect", Tag = "effe", Size = 0x48, MaxVersion = CacheVersion.Halo3Alpha)]
     [TagStructure(Name = "effect", Tag = "effe", Size = 0x68, MaxVersion = CacheVersion.HaloOnline700123)]
     [TagStructure(Name = "effect", Tag = "effe", Size = 0x60, MinVersion = CacheVersion.HaloReach)]
     public class Effect : TagStructure

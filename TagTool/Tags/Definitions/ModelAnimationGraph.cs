@@ -8,6 +8,7 @@ using static TagTool.Tags.TagFieldFlags;
 
 namespace TagTool.Tags.Definitions
 {
+    [TagStructure(Name = "model_animation_graph", Tag = "jmad", Size = 0xF8, MaxVersion = CacheVersion.Halo3Alpha)]
     [TagStructure(Name = "model_animation_graph", Tag = "jmad", Size = 0x104, MaxVersion = CacheVersion.HaloOnline700123)]
     [TagStructure(Name = "model_animation_graph", Tag = "jmad", Size = 0x1B8, MinVersion = CacheVersion.HaloReach)]
     public class ModelAnimationGraph : TagStructure

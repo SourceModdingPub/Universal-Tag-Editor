@@ -6,6 +6,7 @@ using static TagTool.Tags.TagFieldFlags;
 
 namespace TagTool.Tags.Definitions
 {
+    [TagStructure(Name = "chud_globals_definition", Tag = "chgd", Size = 0x110, MaxVersion = CacheVersion.Halo3Alpha)]
     [TagStructure(Name = "chud_globals_definition", Tag = "chgd", Size = 0xF0, MaxVersion = CacheVersion.Halo3Retail)]
     [TagStructure(Name = "chud_globals_definition", Tag = "chgd", Size = 0x208, MinVersion = CacheVersion.Halo3ODST, MaxVersion = CacheVersion.Halo3ODST)]
     [TagStructure(Name = "chud_globals_definition", Tag = "chgd", Size = 0x2C0, MinVersion = CacheVersion.HaloOnlineED)]
@@ -272,6 +273,7 @@ namespace TagTool.Tags.Definitions
         [TagField(MinVersion = CacheVersion.HaloOnlineED)]
         public float Unknown74;
 
+        [TagStructure(Size = 0x3C, MaxVersion = CacheVersion.Halo3Alpha)]
         [TagStructure(Size = 0x208, MaxVersion = CacheVersion.Halo3Retail)]
         [TagStructure(Size = 0x23C, MaxVersion = CacheVersion.Halo3ODST)]
         [TagStructure(Size = 0x2B0, MinVersion = CacheVersion.HaloOnlineED)]
@@ -414,6 +416,7 @@ namespace TagTool.Tags.Definitions
                 MpBlueTeam
             }
 
+            [TagStructure(Size = 0x4C, MaxVersion = CacheVersion.Halo3Alpha)]
             [TagStructure(Size = 0x60, MaxVersion = CacheVersion.Halo3Retail)]
             [TagStructure(Size = 0x130, MaxVersion = CacheVersion.Halo3ODST)]
             [TagStructure(Size = 0xE8, MinVersion = CacheVersion.HaloOnlineED)]
