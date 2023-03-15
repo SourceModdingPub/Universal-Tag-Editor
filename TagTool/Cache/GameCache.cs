@@ -74,6 +74,7 @@ namespace TagTool.Cache
                 case CacheVersion.Halo2Beta:
                     return new GameCacheGen2(map, file);
 
+                case CacheVersion.Halo3Alpha:
                 case CacheVersion.Halo3Beta:
                 case CacheVersion.Halo3Retail:
                 case CacheVersion.Halo3ODST:

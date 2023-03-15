@@ -22,6 +22,10 @@ namespace TagTool.Cache.Gen3
             {
                 switch (Version)
                 {
+                    case CacheVersion.Halo3Alpha:
+                        Resolver = new StringIdResolverHalo3Alpha();
+                        break;
+
                     case CacheVersion.Halo3Beta:
                         Resolver = new StringIdResolverHalo3Beta();
                         break;

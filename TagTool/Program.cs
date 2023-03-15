@@ -33,10 +33,10 @@ namespace TagTool.Commands
 
             if (autoexecCommand == null)
             {
-                Console.WriteLine($"TagTool [{Assembly.GetExecutingAssembly().GetName().Version}]");
+                Console.WriteLine($"Universal Tag Editor - A TagTool fork created by FaberTheCatgirl. [{Assembly.GetExecutingAssembly().GetName().Version}]");
                 Console.WriteLine();
                 Console.WriteLine("Please report any bugs and/or feature requests:");
-                Console.WriteLine("https://github.com/TheGuardians-CI/TagTool/issues");
+                Console.WriteLine("https://github.com/FaberTheCatgirl/TagTool/TagTool/issues");
             }
 
             start:
@@ -148,13 +148,13 @@ namespace TagTool.Commands
                     commandRunner.RunCommand(line);
             }
 
-            Console.WriteLine("\nEnter \"help\" to list available commands. Enter \"exit\" to quit.");
+            Console.WriteLine("\nEnter \"help\" to list available commands. Enter \"exit\" to quit. More Information on command usage for Universal Tag Editor is avaliable on https://c20.reclaimers.net/");
             while (!commandRunner.EOF)
             {
                 // Read and parse a command
                 Console.WriteLine();
                 Console.Write("{0}> ", contextStack.GetPath());
-                Console.Title = $"TagTool {contextStack.GetPath()}>";
+                Console.Title = $"Universal Tag Editor {contextStack.GetPath()}>";
 
                 var line = Console.ReadLine();
                 if (line == "restart")
