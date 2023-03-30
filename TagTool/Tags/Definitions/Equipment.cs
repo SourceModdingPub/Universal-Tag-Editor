@@ -147,11 +147,11 @@ namespace TagTool.Tags.Definitions
         public List<VisionBlock> Vision;
 
         [TagField(MinVersion = CacheVersion.HaloReach)]
-        public List<NullBlock> SpeicalWeapon;
+        public List<NullBlock> SpecialWeapon;
         [TagField(MinVersion = CacheVersion.HaloReach)]
         public List<NullBlock> SpecialMove;
         [TagField(MinVersion = CacheVersion.HaloReach)]
-        public List<NullBlock> EningeerShields;
+        public List<NullBlock> EngineerShields;
         [TagField(MinVersion = CacheVersion.HaloReach)]
         public List<NullBlock> Sprint;
 
@@ -160,18 +160,22 @@ namespace TagTool.Tags.Definitions
         [TagField(Length = 0x3, Flags = Padding, MinVersion = CacheVersion.HaloReach)]
         public byte[] Padding1;
 
+        [TagField(ValidTags = new[] { "chdt" })]
         public CachedTag HudInterface;
-        public CachedTag PickupSound;
 
-        [TagField(MinVersion = CacheVersion.HaloOnlineED)]
+        [TagField(ValidTags = new[] { "scmb", "snd!" })]
+        public CachedTag PickupSound;
+        [TagField(ValidTags = new[] { "scmb", "snd!" }, MinVersion = CacheVersion.HaloOnlineED)]
         public CachedTag EmptySound;
 
+        [TagField(ValidTags = new[] { "effe", "snd!" })]
         public CachedTag ActivationEffect;
+        [TagField(ValidTags = new[] { "effe", "snd!" })]
         public CachedTag ActiveEffect;
+        [TagField(ValidTags = new[] { "effe", "snd!" })]
         public CachedTag DeactivationEffect;
-
-        [TagField(MinVersion = CacheVersion.HaloReach)]
-        public CachedTag EnergChargedEffect;
+        [TagField(ValidTags = new[] { "effe" }, MinVersion = CacheVersion.HaloReach)]
+        public CachedTag EnergyChargedEffect;
 
         [TagField(MinVersion = CacheVersion.HaloOnlineED)]
         public StringId EnterAnimation;
@@ -259,8 +263,11 @@ namespace TagTool.Tags.Definitions
             public float ShieldRechargeDelayScale;
             public float ShieldRechargeRateScale;
             public float ShieldCeilingScale;
+            [TagField(ValidTags = new[] { "jpt!" })]
             public CachedTag ShieldEffect;
+            [TagField(ValidTags = new[] { "jpt!" })]
             public CachedTag OverchargeEffect;
+            [TagField(ValidTags = new[] { "jpt!" })]
             public CachedTag OverchargeDamageEffect;
         }
 
@@ -281,7 +288,9 @@ namespace TagTool.Tags.Definitions
         [TagStructure(Size = 0x34)]
         public class SpawnerBlock : TagStructure
 		{
+            [TagField(ValidTags = new[] { "obje" })]
             public CachedTag SpawnedObject;
+            [TagField(ValidTags = new[] { "effe" })]
             public CachedTag SpawnedEffect;
             public float SpawnRadius;
             public float SpawnZOffset;
@@ -369,12 +378,12 @@ namespace TagTool.Tags.Definitions
             [TagField(MinVersion = CacheVersion.HaloReach)]
             public List<ThresholdEffect> ThresholdEffects;
 
-            [TagField(MaxVersion = CacheVersion.HaloOnline700123)]
+            [TagField(ValidTags = new[] { "effe" }, MaxVersion = CacheVersion.HaloOnline700123)]
             public CachedTag ActivationEffect;
-            [TagField(MaxVersion = CacheVersion.HaloOnline700123)]
+            [TagField(ValidTags = new[] { "effe" }, MaxVersion = CacheVersion.HaloOnline700123)]
             public CachedTag AttachedEffect;
 
-            [TagField(MinVersion = CacheVersion.Halo3ODST, MaxVersion = CacheVersion.Halo3ODST)]
+            [TagField(ValidTags = new[] { "effe" }, MinVersion = CacheVersion.Halo3ODST, MaxVersion = CacheVersion.Halo3ODST)]
             public CachedTag ShutdownEffect;
         }
 
@@ -456,7 +465,9 @@ namespace TagTool.Tags.Definitions
         [TagStructure(Size = 0x34)]
         public class MagPulseBlock : TagStructure
 		{
-            public CachedTag Unknown;
+            [TagField(ValidTags = new[] { "effe" })]
+            public CachedTag ActivationEffect;
+
             public CachedTag Unknown2;
             public CachedTag Unknown3;
             public uint Unknown4;
@@ -512,7 +523,9 @@ namespace TagTool.Tags.Definitions
         [TagStructure(Size = 0x20)]
         public class ArmorLockBlock : TagStructure
 		{
+            [TagField(ValidTags = new[] { "cddf" })]
             public CachedTag CollisionDamage;
+            [TagField(ValidTags = new[] { "cddf" })]
             public CachedTag UnknownCollisionDamage;
         }
 

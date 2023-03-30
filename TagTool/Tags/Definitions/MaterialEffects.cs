@@ -14,18 +14,20 @@ namespace TagTool.Tags.Definitions
         public class Effect : TagStructure
 		{
             public List<OldMaterialEffectBlock> OldMaterials;
-            public List<EffectReference> Sounds;
-            public List<EffectReference> Effects;
+            public List<EffectBlock> Sounds;
+            public List<EffectBlock> Effects;
 
             [TagStructure(Size = 0x28, MaxVersion = CacheVersion.Halo3Retail)]
             [TagStructure(Size = 0x2C, MinVersion = CacheVersion.Halo3ODST)]
-            public class EffectReference : TagStructure
+            public class EffectBlock : TagStructure
 			{
-                public CachedTag Effect;
-                public CachedTag Sound;
-                [TagField(Flags = TagFieldFlags.GlobalMaterial)]
+                [TagField(ValidTags = new[] { "scmb", "snd!", "lsnd", "effe" })]
+                public CachedTag Primary;
+                [TagField(ValidTags = new[] { "scmb", "snd!", "lsnd", "effe" })]
+                public CachedTag Secondary;
+                [TagField(Flags = GlobalMaterial)]
                 public StringId MaterialName;
-                [TagField(Flags = TagFieldFlags.GlobalMaterial)]
+                [TagField(Flags = GlobalMaterial)]
                 public short RuntimeMaterialIndex; // formerly GlobalMaterialIndex
                 public SweetenerModeValue SweetenerMode;
 
@@ -46,11 +48,13 @@ namespace TagTool.Tags.Definitions
             [TagStructure(Size = 0x2C)]
             public class OldMaterialEffectBlock : TagStructure
             {
+                [TagField(ValidTags = new[] { "effe" })]
                 public CachedTag Effect;
+                [TagField(ValidTags = new[] { "snd!", "lsnd" })]
                 public CachedTag Sound;
-                [TagField(Flags = TagFieldFlags.GlobalMaterial)]
+                [TagField(Flags = GlobalMaterial)]
                 public StringId MaterialName;
-                [TagField(Flags = TagFieldFlags.GlobalMaterial)]
+                [TagField(Flags = GlobalMaterial)]
                 public short RuntimeMaterialIndex;
 
                 [TagField(Length = 2, Flags = Padding)]
