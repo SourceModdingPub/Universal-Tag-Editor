@@ -148,7 +148,7 @@ namespace TagTool.Commands
                     commandRunner.RunCommand(line);
             }
 
-            Console.WriteLine("\nEnter \"help\" to list available commands. Enter \"exit\" to quit. More Information on command usage for Universal Tag Editor is avaliable on https://c20.reclaimers.net/");
+            Console.WriteLine("\nEnter \"help\" to list available commands. Enter \"quit\" to quit.");
             while (!commandRunner.EOF)
             {
                 // Read and parse a command
