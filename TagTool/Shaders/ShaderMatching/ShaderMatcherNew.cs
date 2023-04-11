@@ -82,7 +82,7 @@ namespace TagTool.Shaders.ShaderMatching
             return optionParameters;
         }
 
-        public Dictionary<StringId, RenderMethodOption.ParameterBlock> GetOptionBlocks(List<byte> options, RenderMethodDefinition rmdf)
+        public Dictionary<StringId, RenderMethodOption.ParameterBlock> GetOptionBlocks(List<byte> options, RenderMethodDefinition rmdf) //List<byte> options for 0.6, List<byte> rmdf.Method got mainmenucache
         {
             Dictionary<StringId, RenderMethodOption.ParameterBlock> optionBlocks = new Dictionary<StringId, RenderMethodOption.ParameterBlock>();
 
@@ -151,6 +151,7 @@ namespace TagTool.Shaders.ShaderMatching
             Dictionary<CachedTag, long> ShaderTemplateValues = new Dictionary<CachedTag, long>();
             ParticleSorter particleTemplateSorter = new ParticleSorter();
             BeamSorter beamTemplateSorter = new BeamSorter();
+            //CustomSorter customTemplateSorter = new CustomSorter(); //This shit doesn't work... Why?
             ContrailSorter contrailTemplateSorter = new ContrailSorter();
             LightVolumeSorter lightvolumeTemplateSorter = new LightVolumeSorter();
             ShaderSorter shaderTemplateSorter = new ShaderSorter();
@@ -215,6 +216,9 @@ namespace TagTool.Shaders.ShaderMatching
                     case "beam":
                         ShaderTemplateValues.Add(rmt2Tag, Sorter.GetValue(beamTemplateSorter, Sorter.GetTemplateOptions(rmt2Tag.Name)));
                         break;
+                    //case "custom":
+                    //    ShaderTemplateValues.Add(rmt2Tag, Sorter.GetValue(customTemplateSorter, Sorter.GetTemplateOptions(rmt2Tag.Name))); //More Broken Code :c
+                    //    break;
                     case "contrail":
                         ShaderTemplateValues.Add(rmt2Tag, Sorter.GetValue(contrailTemplateSorter, Sorter.GetTemplateOptions(rmt2Tag.Name)));
                         break;
@@ -277,7 +281,7 @@ namespace TagTool.Shaders.ShaderMatching
             {
                 case "beam":            return GetBestTag(beamTemplateSorter, ShaderTemplateValues, srcRmt2Tagname, sourceRmt2Tag.Name);
                 case "black":           return null;
-                case "custom":          return null;
+                //case "custom":          return GetBestTag(customTemplateSorter, ShaderTemplateValues, srcRmt2Tagname, srcRmt2Tagname.Name); //Write Shader Code, they said it would be fun...
                 case "contrail":        return GetBestTag(contrailTemplateSorter, ShaderTemplateValues, srcRmt2Tagname, sourceRmt2Tag.Name);
                 case "decal":           return GetBestTag(decalTemplateSorter, ShaderTemplateValues, srcRmt2Tagname, sourceRmt2Tag.Name);
                 case "foliage":         return GetBestTag(foliageTemplateSorter, ShaderTemplateValues, srcRmt2Tagname, sourceRmt2Tag.Name);
@@ -626,7 +630,7 @@ namespace TagTool.Shaders.ShaderMatching
                         case "custom":          return new HaloShaderGenerator.Custom.CustomGenerator(Options, applyFixes);
                         case "decal":           return new HaloShaderGenerator.Decal.DecalGenerator(Options, applyFixes);
                         case "foliage":         return new HaloShaderGenerator.Foliage.FoliageGenerator(Options, applyFixes);
-                        //case "glass":           return new HaloShaderGenerator.Glass.GlassGenerator(Options, applyFixes);
+                        //case "glass":           return new HaloShaderGenerator.Glass.GlassGenerator(Options, applyFixes); //todo: define glass
                         case "halogram":        return new HaloShaderGenerator.Halogram.HalogramGenerator(Options, applyFixes);
                         case "light_volume":    return new HaloShaderGenerator.LightVolume.LightVolumeGenerator(Options, applyFixes);
                         case "particle":        return new HaloShaderGenerator.Particle.ParticleGenerator(Options, applyFixes);

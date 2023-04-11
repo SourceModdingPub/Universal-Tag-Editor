@@ -11,7 +11,7 @@ namespace TagTool.Shaders.ShaderMatching
     // The metric is then used to find rmt2 that has the minimal superior value to the target shader. If a perfect match exists this would return the exact rmt2.
     //
 
-    public static class Sorter
+    public static class CustomSorter
     {
         public static List<int> GetTemplateOptions(string name)
         {
@@ -50,7 +50,7 @@ namespace TagTool.Shaders.ShaderMatching
         string ToString(List<int> options);
     }
 
-    public class ShaderSorter : SortingInterface
+    public class CustomSorter : SortingInterface
     {
         //
         // TODO: order the list for best matches, the higher the index the higher the importance. (low -> high) (0 -> n). Options that can be easily adapted should have less importance
@@ -69,16 +69,16 @@ namespace TagTool.Shaders.ShaderMatching
             ShaderOptionTypes.self_illumination,
             ShaderOptionTypes.specular_mask,
             ShaderOptionTypes.albedo,
-            ShaderOptionTypes.material_model
+            ShaderOptionTypes.material_model,
         };
 
         private static List<AlbedoOptions> AlbedoOrder = new List<AlbedoOptions> {
             AlbedoOptions.default_,
-            AlbedoOptions.detail_blend,
+            AlbedoOptions.detail_blemd,
             AlbedoOptions.constant_color,
             AlbedoOptions.two_change_color,
             AlbedoOptions.four_change_color,
-            AlbedoOptions.three_detail_blend,
+            AlbedoOptions.three_detail_blemd,
             AlbedoOptions.two_detail_overlay,
             AlbedoOptions.two_detail,
             AlbedoOptions.color_mask,
@@ -87,24 +87,14 @@ namespace TagTool.Shaders.ShaderMatching
             AlbedoOptions.chameleon,
             AlbedoOptions.two_change_color_chameleon,
             AlbedoOptions.chameleon_masked,
-            AlbedoOptions.color_mask_hard_light,
-            AlbedoOptions.two_change_color_tex_overlay,
-            AlbedoOptions.chameleon_albedo_masked,
-            AlbedoOptions.custom_cube,
-            AlbedoOptions.two_color,
-            AlbedoOptions.scrolling_cube_mask,
-            AlbedoOptions.scrolling_cube,
-            AlbedoOptions.scrolling_texture_uv,
-            AlbedoOptions.texture_from_misc
+            AlbedoOptions.color_mask_hard_light
         };
 
         private static List<BumpMappingOptions> BumpMappingOrder = new List<BumpMappingOptions> {
             BumpMappingOptions.off,
             BumpMappingOptions.standard,
             BumpMappingOptions.detail,
-            BumpMappingOptions.detail_masked,
-            BumpMappingOptions.detail_plus_detail_masked,
-            BumpMappingOptions.detail_plus_unorm // typo in the shader, not my fault. waiting on a fix from the devs at 343 industries.
+            BumpMappingOptions.detail_masked
         };
 
         private static List<AlphaTestOptions> AlphaTestOrder = new List<AlphaTestOptions> {
@@ -122,15 +112,7 @@ namespace TagTool.Shaders.ShaderMatching
         private static List<MaterialModelOptions> MaterialModelOrder = new List<MaterialModelOptions> {
             MaterialModelOptions.diffuse_only,
             MaterialModelOptions.cook_torrance,
-            MaterialModelOptions.cook_torrance_custom_cube,
-            MaterialModelOptions.cook_torrance_pbr_maps,
-            MaterialModelOptions.cook_torrance_two_color_spec_tint,
-            MaterialModelOptions.cook_torrance_scrolling_cube,
-            MaterialModelOptions.cook_torrance_scrolling_cube_mask,
-            MaterialModelOptions.cook_torrance_rim_fresnel,
-            MaterialModelOptions.cook_torrance_from_albedo,
             MaterialModelOptions.two_lobe_phong,
-            MaterialModelOptions.two_lobe_phong_tint_map,
             MaterialModelOptions.foliage,
             MaterialModelOptions.none,
             MaterialModelOptions.glass,
@@ -144,24 +126,20 @@ namespace TagTool.Shaders.ShaderMatching
             EnvironmentMappingOptions.dynamic,
             EnvironmentMappingOptions.from_flat_texture,
             EnvironmentMappingOptions.per_pixel,
-            EnvironmentMappingOptions.custom_map,
-            EnvironmentMappingOptions.from_flat_exture_as_cubemap // typo in the shader, not my fault. waiting on a fix from the devs at 343 industries. Check https://github.com/Joint-Issue-Tracker/Joint-Issue-Tracker/issues/98 for updates.
+            EnvironmentMappingOptions.custom_map
         };
 
         private static List<SelfIlluminationOptions> SelfIlluminationOrder = new List<SelfIlluminationOptions> {
             SelfIlluminationOptions.off,
             SelfIlluminationOptions.simple,
             SelfIlluminationOptions.three_channel_self_illum,
-            //SelfIlluminationOptions.3_channel_self_illum, //Another typo in the shader, not my fault. waiting on a fix from the devs at 343 industries. You can use the above line instead by porting from xbox 360 map caches.
             SelfIlluminationOptions.plasma,
             SelfIlluminationOptions.from_diffuse,
             SelfIlluminationOptions.illum_detail,
             SelfIlluminationOptions.meter,
             SelfIlluminationOptions.self_illum_times_diffuse,
             SelfIlluminationOptions.simple_with_alpha_mask,
-            SelfIlluminationOptions.simple_four_change_color,
-            SelfIlluminationOptions.illum_detail_world_space_four_cc,
-            SelfIlluminationOptions.illum_change_color
+            SelfIlluminationOptions.simple_four_change_color
         };
 
         private static List<BlendModeOptions> BlendModeOrder = new List<BlendModeOptions> {
@@ -170,7 +148,7 @@ namespace TagTool.Shaders.ShaderMatching
             BlendModeOptions.multiply,
             BlendModeOptions.double_multiply,
             BlendModeOptions.pre_multiplied_alpha,
-            BlendModeOptions.alpha_blend
+            BlendModeOptions.alpha_blend,
         };
 
         private static List<ParallaxOptions> ParallaxOrder = new List<ParallaxOptions> {
