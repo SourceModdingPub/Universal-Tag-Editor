@@ -287,7 +287,17 @@ namespace TagTool.Shaders.ShaderMatching
             chameleon,
             two_change_color_chameleon,
             chameleon_masked,
-            color_mask_hard_light
+            color_mask_hard_light,
+            detail_blend,
+            three_detail_blend,
+            two_change_color_tex_overlay,
+            chameleon_albedo_masked,
+            custom_cube,
+            two_color,
+            scrolling_cube_mask,
+            scrolling_cube,
+            scrolling_texture_uv,
+            texture_from_misc
         }
 
         private enum BumpMappingOptions
@@ -295,7 +305,9 @@ namespace TagTool.Shaders.ShaderMatching
             off,
             standard,
             detail,
-            detail_masked
+            detail_masked,
+            detail_plus_detail_masked,
+            detail_plus_unorm
         }
 
         private enum AlphaTestOptions
@@ -322,7 +334,15 @@ namespace TagTool.Shaders.ShaderMatching
             glass,
             organism,
             single_lobe_phong,
-            car_paint
+            car_paint,
+            cook_torrance_custom_cube,
+            cook_torrance_pbr_maps,
+            cook_torrance_two_color_spec_tint,
+            cook_torrance_scrolling_cube,
+            cook_torrance_scrolling_cube_mask,
+            cook_torrance_rim_fresnel,
+            cook_torrance_from_albedo,
+            two_lobe_phong_tint_map
         }
 
         private enum EnvironmentMappingOptions
@@ -331,7 +351,8 @@ namespace TagTool.Shaders.ShaderMatching
             per_pixel,
             dynamic,
             from_flat_texture,
-            custom_map
+            custom_map,
+            from_flat_exture_as_cubemap
         }
 
         private enum SelfIlluminationOptions
@@ -345,7 +366,9 @@ namespace TagTool.Shaders.ShaderMatching
             meter,
             self_illum_times_diffuse,
             simple_with_alpha_mask,
-            simple_four_change_color
+            simple_four_change_color,
+            illum_detail_world_space_four_cc,
+            illum_change_color
         }
 
         private enum BlendModeOptions
