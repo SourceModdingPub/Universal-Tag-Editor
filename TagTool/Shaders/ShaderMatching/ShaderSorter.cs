@@ -59,7 +59,8 @@ namespace TagTool.Shaders.ShaderMatching
         //
 
         // these private lists define the order of the types and options in a shader. The matcher will use these when no perfect match exists. 
-        private static List<ShaderOptionTypes> TypeOrder = new List<ShaderOptionTypes> {
+        private static List<ShaderOptionTypes> TypeOrder = new List<ShaderOptionTypes> 
+        {
             ShaderOptionTypes.misc,
             ShaderOptionTypes.environment_mapping,
             ShaderOptionTypes.parallax,
@@ -78,7 +79,8 @@ namespace TagTool.Shaders.ShaderMatching
             ShaderOptionTypes.wetness
         };
 
-        private static List<AlbedoOptions> AlbedoOrder = new List<AlbedoOptions> {
+        private static List<AlbedoOptions> AlbedoOrder = new List<AlbedoOptions> 
+        {
             AlbedoOptions.default_,
             AlbedoOptions.detail_blend,
             AlbedoOptions.constant_color,
@@ -105,23 +107,26 @@ namespace TagTool.Shaders.ShaderMatching
             AlbedoOptions.four_change_color_applying_to_specular
         };
 
-        private static List<BumpMappingOptions> BumpMappingOrder = new List<BumpMappingOptions> {
+        private static List<BumpMappingOptions> BumpMappingOrder = new List<BumpMappingOptions> 
+        {
             BumpMappingOptions.off,
             BumpMappingOptions.standard,
             BumpMappingOptions.detail,
             BumpMappingOptions.detail_masked,
             BumpMappingOptions.detail_plus_detail_masked,
-            BumpMappingOptions.detail_plus_unorm // typo in the shader, not my fault. waiting on a fix from the devs at 343 industries.
+            BumpMappingOptions.detail_plus_unorm, // typo in the shader, not my fault. waiting on a fix from the devs at 343 industries.
             BumpMappingOptions.standard_wrinkle, //Halo Reach
-            BumpMappingOptions.detail_wrinkle, //Halo Reach
+            BumpMappingOptions.detail_wrinkle //Halo Reach
         };
 
-        private static List<AlphaTestOptions> AlphaTestOrder = new List<AlphaTestOptions> {
+        private static List<AlphaTestOptions> AlphaTestOrder = new List<AlphaTestOptions> 
+        {
             AlphaTestOptions.none,
             AlphaTestOptions.simple
         };
 
-        private static List<SpecularMaskOptions> SpecularMaskOrder = new List<SpecularMaskOptions> {
+        private static List<SpecularMaskOptions> SpecularMaskOrder = new List<SpecularMaskOptions> 
+        {
             SpecularMaskOptions.no_specular_mask,
             SpecularMaskOptions.specular_mask_from_diffuse,
             SpecularMaskOptions.specular_mask_mult_diffuse, //Halo Reach 
@@ -129,7 +134,8 @@ namespace TagTool.Shaders.ShaderMatching
             SpecularMaskOptions.specular_mask_from_color_texture
         };
 
-        private static List<MaterialModelOptions> MaterialModelOrder = new List<MaterialModelOptions> {
+        private static List<MaterialModelOptions> MaterialModelOrder = new List<MaterialModelOptions> 
+        {
             MaterialModelOptions.diffuse_only,
             MaterialModelOptions.cook_torrance,
             MaterialModelOptions.cook_torrance_custom_cube,
@@ -151,7 +157,8 @@ namespace TagTool.Shaders.ShaderMatching
             MaterialModelOptions.hair
         };
 
-        private static List<EnvironmentMappingOptions> EnvrionmentMappingOrder = new List<EnvironmentMappingOptions> {
+        private static List<EnvironmentMappingOptions> EnvrionmentMappingOrder = new List<EnvironmentMappingOptions> 
+        {
             EnvironmentMappingOptions.none,
             EnvironmentMappingOptions.dynamic,
             EnvironmentMappingOptions.from_flat_texture,
@@ -160,7 +167,8 @@ namespace TagTool.Shaders.ShaderMatching
             EnvironmentMappingOptions.from_flat_exture_as_cubemap // typo in the shader, not my fault. waiting on a fix from the devs at 343 industries. Check https://github.com/Joint-Issue-Tracker/Joint-Issue-Tracker/issues/98 for updates.
         };
 
-        private static List<SelfIlluminationOptions> SelfIlluminationOrder = new List<SelfIlluminationOptions> {
+        private static List<SelfIlluminationOptions> SelfIlluminationOrder = new List<SelfIlluminationOptions> 
+        {
             SelfIlluminationOptions.off,
             SelfIlluminationOptions.simple,
             SelfIlluminationOptions.three_channel_self_illum,
@@ -179,7 +187,8 @@ namespace TagTool.Shaders.ShaderMatching
             SelfIlluminationOptions.illum_change_color_detail
         };
 
-        private static List<BlendModeOptions> BlendModeOrder = new List<BlendModeOptions> {
+        private static List<BlendModeOptions> BlendModeOrder = new List<BlendModeOptions> 
+        {
             BlendModeOptions.opaque,
             BlendModeOptions.additive,
             BlendModeOptions.multiply,
@@ -188,22 +197,25 @@ namespace TagTool.Shaders.ShaderMatching
             BlendModeOptions.alpha_blend
         };
 
-        private static List<ParallaxOptions> ParallaxOrder = new List<ParallaxOptions> {
+        private static List<ParallaxOptions> ParallaxOrder = new List<ParallaxOptions> 
+        {
             ParallaxOptions.off,
             ParallaxOptions.simple,
             ParallaxOptions.interpolated,
             ParallaxOptions.simple_detail
         };
 
-        private static List<MiscOptions> MiscOrder = new List<MiscOptions> {
+        private static List<MiscOptions> MiscOrder = new List<MiscOptions> 
+        {
             MiscOptions.first_person_never,
             MiscOptions.first_person_sometimes,
             MiscOptions.first_person_always,
-            MiscOptions.first_person_never_with_rotating_bitmaps
+            MiscOptions.first_person_never_with_rotating_bitmaps,
             MiscOptions.rotating_bitmaps_super_slow
         };
 
-        private static List<WetnessOptions> WetnessOrder = new List<WetnessOptions> {
+        private static List<WetnessOptions> WetnessOrder = new List<WetnessOptions> 
+        {
             WetnessOptions.default,
             WetnessOptions.flood,
             WetnessOptions.proof,
@@ -211,17 +223,20 @@ namespace TagTool.Shaders.ShaderMatching
             WetnessOptions.ripples
         };
 
-        private static List<DistortionOptions> DistortionOrder = new List<DistortionOptions> {
+        private static List<DistortionOptions> DistortionOrder = new List<DistortionOptions> 
+        {
             DistortionOptions.off,
             DistortionOptions.on
         };
 
-        private static List<SoftFadeOptions> SoftFadeOrder = new List<SoftFadeOptions> {
+        private static List<SoftFadeOptions> SoftFadeOrder = new List<SoftFadeOptions> 
+        {
             SoftFadeOptions.off,
             SoftFadeOptions.on
         };
 
-        private static List<AlphaBlendSourceOptions> AlphaBlendSourceOrder = new List<AlphaBlendSourceOptions> {
+        private static List<AlphaBlendSourceOptions> AlphaBlendSourceOrder = new List<AlphaBlendSourceOptions> 
+        {
             DetailOptions.from_albedo_alpha_without_fresnel,
             DetailOptions.from_albedo_alpha,
             DetailOptions.from_opacity_map_alpha,
