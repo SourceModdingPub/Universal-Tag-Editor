@@ -69,7 +69,13 @@ namespace TagTool.Shaders.ShaderMatching
             ShaderOptionTypes.self_illumination,
             ShaderOptionTypes.specular_mask,
             ShaderOptionTypes.albedo,
-            ShaderOptionTypes.material_model
+            ShaderOptionTypes.material_model,
+            ShaderOptionTypes.warp,
+            ShaderOptionTypes.overlay,
+            ShaderOptionTypes.blend_mode,
+            ShaderOptionTypes.alpha_test,
+            ShaderOptionTypes.alpha_blend_source,
+            ShaderOptionTypes.wetness
         };
 
         private static List<AlbedoOptions> AlbedoOrder = new List<AlbedoOptions> {
@@ -95,7 +101,8 @@ namespace TagTool.Shaders.ShaderMatching
             AlbedoOptions.scrolling_cube_mask,
             AlbedoOptions.scrolling_cube,
             AlbedoOptions.scrolling_texture_uv,
-            AlbedoOptions.texture_from_misc
+            AlbedoOptions.texture_from_misc,
+            AlbedoOptions.four_change_color_applying_to_specular
         };
 
         private static List<BumpMappingOptions> BumpMappingOrder = new List<BumpMappingOptions> {
@@ -105,6 +112,8 @@ namespace TagTool.Shaders.ShaderMatching
             BumpMappingOptions.detail_masked,
             BumpMappingOptions.detail_plus_detail_masked,
             BumpMappingOptions.detail_plus_unorm // typo in the shader, not my fault. waiting on a fix from the devs at 343 industries.
+            BumpMappingOptions.standard_wrinkle, //Halo Reach
+            BumpMappingOptions.detail_wrinkle, //Halo Reach
         };
 
         private static List<AlphaTestOptions> AlphaTestOrder = new List<AlphaTestOptions> {
@@ -115,6 +124,7 @@ namespace TagTool.Shaders.ShaderMatching
         private static List<SpecularMaskOptions> SpecularMaskOrder = new List<SpecularMaskOptions> {
             SpecularMaskOptions.no_specular_mask,
             SpecularMaskOptions.specular_mask_from_diffuse,
+            SpecularMaskOptions.specular_mask_mult_diffuse, //Halo Reach 
             SpecularMaskOptions.specular_mask_from_texture,
             SpecularMaskOptions.specular_mask_from_color_texture
         };
@@ -129,6 +139,7 @@ namespace TagTool.Shaders.ShaderMatching
             MaterialModelOptions.cook_torrance_scrolling_cube_mask,
             MaterialModelOptions.cook_torrance_rim_fresnel,
             MaterialModelOptions.cook_torrance_from_albedo,
+            MaterialModelOptions.cook_torrance_odst, //From Pedros shadergen code, leaving it here for now as an example of how to add new options outside of the scope of the offical shaders.
             MaterialModelOptions.two_lobe_phong,
             MaterialModelOptions.two_lobe_phong_tint_map,
             MaterialModelOptions.foliage,
@@ -136,7 +147,8 @@ namespace TagTool.Shaders.ShaderMatching
             MaterialModelOptions.glass,
             MaterialModelOptions.organism,
             MaterialModelOptions.single_lobe_phong,
-            MaterialModelOptions.car_paint
+            MaterialModelOptions.car_paint,
+            MaterialModelOptions.hair
         };
 
         private static List<EnvironmentMappingOptions> EnvrionmentMappingOrder = new List<EnvironmentMappingOptions> {
@@ -161,7 +173,10 @@ namespace TagTool.Shaders.ShaderMatching
             SelfIlluminationOptions.simple_with_alpha_mask,
             SelfIlluminationOptions.simple_four_change_color,
             SelfIlluminationOptions.illum_detail_world_space_four_cc,
-            SelfIlluminationOptions.illum_change_color
+            SelfIlluminationOptions.multilayer_additive,
+            SelfIlluminationOptions.paletized_plasma,
+            SelfIlluminationOptions.illum_change_color,
+            SelfIlluminationOptions.illum_change_color_detail
         };
 
         private static List<BlendModeOptions> BlendModeOrder = new List<BlendModeOptions> {
@@ -185,6 +200,33 @@ namespace TagTool.Shaders.ShaderMatching
             MiscOptions.first_person_sometimes,
             MiscOptions.first_person_always,
             MiscOptions.first_person_never_with_rotating_bitmaps
+            MiscOptions.rotating_bitmaps_super_slow
+        };
+
+        private static List<WetnessOptions> WetnessOrder = new List<WetnessOptions> {
+            WetnessOptions.default,
+            WetnessOptions.flood,
+            WetnessOptions.proof,
+            WetnessOptions.simple,
+            WetnessOptions.ripples
+        };
+
+        private static List<DistortionOptions> DistortionOrder = new List<DistortionOptions> {
+            DistortionOptions.off,
+            DistortionOptions.on
+        };
+
+        private static List<SoftFadeOptions> SoftFadeOrder = new List<SoftFadeOptions> {
+            SoftFadeOptions.off,
+            SoftFadeOptions.on
+        };
+
+        private static List<AlphaBlendSourceOptions> AlphaBlendSourceOrder = new List<AlphaBlendSourceOptions> {
+            DetailOptions.from_albedo_alpha_without_fresnel,
+            DetailOptions.from_albedo_alpha,
+            DetailOptions.from_opacity_map_alpha,
+            DetailOptions.from_opacity_map_rgb,
+            DetailOptions.from_opacity_map_alpha_and_albedo_alpha
         };
 
 
@@ -204,6 +246,15 @@ namespace TagTool.Shaders.ShaderMatching
                 case ShaderOptionTypes.blend_mode: return 6;
                 case ShaderOptionTypes.parallax: return 4;
                 case ShaderOptionTypes.misc: return 4;
+                case ShaderOptionTypes.misc_attr_animation: return 3;
+                case ShaderOptionTypes.distortion: return 2;
+                case ShaderOptionTypes.warp: return 3;
+                case ShaderOptionTypes.overlay: return 5;
+                case ShaderOptionTypes.soft_fade: return 2;
+                case ShaderOptionTypes.edge_fade: return 2;
+                case ShaderOptionTypes.blend_mode: return 2;
+                case ShaderOptionTypes.wetness_options: return 5;
+                case ShaderOptionTypes.alpha_blend_source: return 5;
                 default: return 0;
             }
         }
@@ -227,6 +278,15 @@ namespace TagTool.Shaders.ShaderMatching
                 case ShaderOptionTypes.blend_mode:              return BlendModeOrder.IndexOf((BlendModeOptions)optionIndex);
                 case ShaderOptionTypes.parallax:                return ParallaxOrder.IndexOf((ParallaxOptions)optionIndex);
                 case ShaderOptionTypes.misc:                    return MiscOrder.IndexOf((MiscOptions)optionIndex);
+                case ShaderOptionTypes.misc_attr_animation:     return MiscAttrAnimationOrder.IndexOf((MiscOptions)optionIndex);
+                case ShaderOptionTypes.distortion:              return DistortionOrder.IndexOf((DistortionOptions)optionIndex);
+                case ShaderOptionTypes.warp:                    return WarpOrder.IndexOf((WarpOptions)optionIndex);
+                case ShaderOptionTypes.overlay:                 return OverlayOrder.IndexOf((OverlayOptions)optionIndex);
+                case ShaderOptionTypes.soft_fade:               return SoftFadeOrder.IndexOf((SoftFadeOptions)optionIndex);
+                case ShaderOptionTypes.edge_fade:               return EdgeFadeOrder.IndexOf((EdgeFadeOptions)optionIndex);
+                case ShaderOptionTypes.blend_mode:              return BlendModeOrder.IndexOf((BlendModeOptions)optionIndex);
+                case ShaderOptionTypes.wetness_options:         return WetnessOrder.IndexOf((WetnessOptions)optionIndex);
+                case ShaderOptionTypes.alpha_blend_source:      return AlphaBlendSourceOrder.IndexOf((AlphaBlendSourceOptions)optionIndex);
                 default:                                        return 0;
             }
         }
@@ -247,6 +307,15 @@ namespace TagTool.Shaders.ShaderMatching
             result += $"Blend Mode: {(BlendModeOptions)options[7]} \n";
             result += $"Parallax: {(ParallaxOptions)options[8]} \n";
             result += $"Misc: {(MiscOptions)options[9]} \n";
+            result += $"Misc Attr Animation: {(MiscOptions)options[10]} \n";
+            result += $"Distortion: {(DistortionOptions)options[11]} \n";
+            result += $"Soft Fade: {(SoftFadeOptions)options[12]} \n";
+            result += $"Warp: {(WarpOptions)options[13]} \n";
+            result += $"Overlay: {(OverlayOptions)options[14]} \n";
+            result += $"Edge Fade: {(EdgeFadeOptions)options[15]} \n";
+            result += $"Blend Mode: {(BlendModeOptions)options[16]} \n";
+            result += $"Wetness Options: {(WetnessOptions)options[17]} \n";
+            result += $"Alpha Blend Source: {(AlphaBlendSourceOptions)options[18]} \n";
 
             return result;
         }
@@ -268,7 +337,15 @@ namespace TagTool.Shaders.ShaderMatching
             blend_mode = 7,
             parallax = 8,
             misc = 9,
-            distortion = 10,
+            misc_attr_animation = 10,
+            distortion = 11,
+            soft_fade = 12,
+            warp = 13,
+            overlay = 14,
+            edge_fade = 15,
+            blend_mode = 16,
+            wetness_options = 17,
+            alpha_blend_source = 18
         }
 
         private enum AlbedoOptions
@@ -297,7 +374,8 @@ namespace TagTool.Shaders.ShaderMatching
             scrolling_cube_mask,
             scrolling_cube,
             scrolling_texture_uv,
-            texture_from_misc
+            texture_from_misc,
+            four_change_color_applying_to_specular
         }
 
         private enum BumpMappingOptions
@@ -335,8 +413,9 @@ namespace TagTool.Shaders.ShaderMatching
             organism,
             single_lobe_phong,
             car_paint,
+            hair, // Reach Shader
             cook_torrance_custom_cube,
-            cook_torrance_pbr_maps,
+            cook_torrance_pbr_maps, // H3 Shader
             cook_torrance_two_color_spec_tint,
             cook_torrance_scrolling_cube,
             cook_torrance_scrolling_cube_mask,
@@ -397,7 +476,20 @@ namespace TagTool.Shaders.ShaderMatching
             first_person_never_with_rotating_bitmaps
         }
 
+        private enum MiscAttrAnimationOptions
+        {
+            off,
+            scrolling_cube,
+            scrolling_projected
+        }
+
         private enum DistortionOptions
+        {
+            off,
+            on
+        }
+
+        private enum SoftFadeOptions
         {
             off,
             on
