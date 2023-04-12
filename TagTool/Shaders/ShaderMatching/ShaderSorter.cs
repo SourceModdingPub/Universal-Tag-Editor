@@ -216,7 +216,7 @@ namespace TagTool.Shaders.ShaderMatching
 
         private static List<WetnessOptions> WetnessOrder = new List<WetnessOptions> 
         {
-            WetnessOptions.default,
+            //WetnessOptions.default, //overlapping Indentifiers
             WetnessOptions.flood,
             WetnessOptions.proof,
             WetnessOptions.simple,
@@ -267,7 +267,6 @@ namespace TagTool.Shaders.ShaderMatching
                 case ShaderOptionTypes.overlay: return 5;
                 case ShaderOptionTypes.soft_fade: return 2;
                 case ShaderOptionTypes.edge_fade: return 2;
-                case ShaderOptionTypes.blend_mode: return 2;
                 case ShaderOptionTypes.wetness_options: return 5;
                 case ShaderOptionTypes.alpha_blend_source: return 5;
                 default: return 0;
@@ -293,14 +292,13 @@ namespace TagTool.Shaders.ShaderMatching
                 case ShaderOptionTypes.blend_mode:              return BlendModeOrder.IndexOf((BlendModeOptions)optionIndex);
                 case ShaderOptionTypes.parallax:                return ParallaxOrder.IndexOf((ParallaxOptions)optionIndex);
                 case ShaderOptionTypes.misc:                    return MiscOrder.IndexOf((MiscOptions)optionIndex);
-                case ShaderOptionTypes.misc_attr_animation:     return MiscAttrAnimationOrder.IndexOf((MiscOptions)optionIndex);
+                case ShaderOptionTypes.misc_attr_animation:     return MiscAttrAnimationOrder.IndexOf((MiscAttrAnimationOptions)optionIndex);
                 case ShaderOptionTypes.distortion:              return DistortionOrder.IndexOf((DistortionOptions)optionIndex);
                 case ShaderOptionTypes.warp:                    return WarpOrder.IndexOf((WarpOptions)optionIndex);
                 case ShaderOptionTypes.overlay:                 return OverlayOrder.IndexOf((OverlayOptions)optionIndex);
                 case ShaderOptionTypes.soft_fade:               return SoftFadeOrder.IndexOf((SoftFadeOptions)optionIndex);
                 case ShaderOptionTypes.edge_fade:               return EdgeFadeOrder.IndexOf((EdgeFadeOptions)optionIndex);
-                case ShaderOptionTypes.blend_mode:              return BlendModeOrder.IndexOf((BlendModeOptions)optionIndex);
-                case ShaderOptionTypes.wetness_options:         return WetnessOrder.IndexOf((WetnessOptions)optionIndex);
+                case ShaderOptionTypes.wetness:                 return WetnessOrder.IndexOf((WetnessOptions)optionIndex);
                 case ShaderOptionTypes.alpha_blend_source:      return AlphaBlendSourceOrder.IndexOf((AlphaBlendSourceOptions)optionIndex);
                 default:                                        return 0;
             }
@@ -328,9 +326,8 @@ namespace TagTool.Shaders.ShaderMatching
             result += $"Warp: {(WarpOptions)options[13]} \n";
             result += $"Overlay: {(OverlayOptions)options[14]} \n";
             result += $"Edge Fade: {(EdgeFadeOptions)options[15]} \n";
-            result += $"Blend Mode: {(BlendModeOptions)options[16]} \n";
-            result += $"Wetness Options: {(WetnessOptions)options[17]} \n";
-            result += $"Alpha Blend Source: {(AlphaBlendSourceOptions)options[18]} \n";
+            result += $"Wetness: {(WetnessOptions)options[16]} \n";
+            result += $"Alpha Blend Source: {(AlphaBlendSourceOptions)options[17]} \n";
 
             return result;
         }
@@ -358,9 +355,9 @@ namespace TagTool.Shaders.ShaderMatching
             warp = 13,
             overlay = 14,
             edge_fade = 15,
-            blend_mode = 16,
-            wetness_options = 17,
-            alpha_blend_source = 18
+            wetness_options = 16,
+            alpha_blend_source = 17,
+            wetness = 18
         }
 
         private enum AlbedoOptions
@@ -400,7 +397,9 @@ namespace TagTool.Shaders.ShaderMatching
             detail,
             detail_masked,
             detail_plus_detail_masked,
-            detail_plus_unorm
+            detail_plus_unorm,
+            standard_wrinkle,
+            detail_wrinkle
         }
 
         private enum AlphaTestOptions
@@ -414,7 +413,8 @@ namespace TagTool.Shaders.ShaderMatching
             no_specular_mask,
             specular_mask_from_diffuse,
             specular_mask_from_texture,
-            specular_mask_from_color_texture
+            specular_mask_from_color_texture,
+            specular_mask_mult_diffuse
         }
 
         private enum MaterialModelOptions
@@ -436,7 +436,8 @@ namespace TagTool.Shaders.ShaderMatching
             cook_torrance_scrolling_cube_mask,
             cook_torrance_rim_fresnel,
             cook_torrance_from_albedo,
-            two_lobe_phong_tint_map
+            two_lobe_phong_tint_map,
+            cook_torrance_odst
         }
 
         private enum EnvironmentMappingOptions
@@ -462,7 +463,10 @@ namespace TagTool.Shaders.ShaderMatching
             simple_with_alpha_mask,
             simple_four_change_color,
             illum_detail_world_space_four_cc,
-            illum_change_color
+            illum_change_color,
+            multilayer_additive,
+            paletized_plasma,
+            illum_change_color_detail
         }
 
         private enum BlendModeOptions
@@ -488,7 +492,8 @@ namespace TagTool.Shaders.ShaderMatching
             first_person_never,
             first_person_sometimes,
             first_person_always,
-            first_person_never_with_rotating_bitmaps
+            first_person_never_with_rotating_bitmaps,
+            rotating_bitmaps_super_slow
         }
 
         private enum MiscAttrAnimationOptions
