@@ -1,7 +1,7 @@
 # Universal Tag Editor
 A command-line tool forked from TagTool designed to aid in the research and modification of Halo cache files. 
 
-## We've included the generated diagram by adding it to the README:
+I've also included a neat generated diagram:
 
 ![Visualization of this repo](./diagram.svg)
 
