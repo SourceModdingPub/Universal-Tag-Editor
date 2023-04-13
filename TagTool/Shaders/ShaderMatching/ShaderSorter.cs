@@ -214,14 +214,14 @@ namespace TagTool.Shaders.ShaderMatching
             MiscOptions.rotating_bitmaps_super_slow
         };
 
-        private static List<WetnessOptions> WetnessOrder = new List<WetnessOptions> 
-        {
-            //WetnessOptions.default, //overlapping Indentifiers
-            WetnessOptions.flood,
-            WetnessOptions.proof,
-            WetnessOptions.simple,
-            WetnessOptions.ripples
-        };
+        //private static List<WetnessOptions> WetnessOrder = new List<WetnessOptions> 
+        //{
+        //    //WetnessOptions.default, //overlapping Indentifiers
+        //    WetnessOptions.flood,
+        //    WetnessOptions.proof,
+        //    WetnessOptions.simple,
+        //    WetnessOptions.ripples
+        //};
 
         private static List<DistortionOptions> DistortionOrder = new List<DistortionOptions> 
         {
@@ -235,14 +235,14 @@ namespace TagTool.Shaders.ShaderMatching
             SoftFadeOptions.on
         };
 
-        private static List<AlphaBlendSourceOptions> AlphaBlendSourceOrder = new List<AlphaBlendSourceOptions> 
-        {
-            DetailOptions.from_albedo_alpha_without_fresnel,
-            DetailOptions.from_albedo_alpha,
-            DetailOptions.from_opacity_map_alpha,
-            DetailOptions.from_opacity_map_rgb,
-            DetailOptions.from_opacity_map_alpha_and_albedo_alpha
-        };
+        //private static List<AlphaBlendSourceOptions> AlphaBlendSourceOrder = new List<AlphaBlendSourceOptions> 
+        //{
+        //    DetailOptions.from_albedo_alpha_without_fresnel,
+        //    DetailOptions.from_albedo_alpha,
+        //    DetailOptions.from_opacity_map_alpha,
+        //    DetailOptions.from_opacity_map_rgb,
+        //    DetailOptions.from_opacity_map_alpha_and_albedo_alpha
+        //};
 
 
         public int GetTypeCount() => 10;
@@ -292,14 +292,14 @@ namespace TagTool.Shaders.ShaderMatching
                 case ShaderOptionTypes.blend_mode:              return BlendModeOrder.IndexOf((BlendModeOptions)optionIndex);
                 case ShaderOptionTypes.parallax:                return ParallaxOrder.IndexOf((ParallaxOptions)optionIndex);
                 case ShaderOptionTypes.misc:                    return MiscOrder.IndexOf((MiscOptions)optionIndex);
-                case ShaderOptionTypes.misc_attr_animation:     return MiscAttrAnimationOrder.IndexOf((MiscAttrAnimationOptions)optionIndex);
+                //case ShaderOptionTypes.misc_attr_animation:     return MiscAttrAnimationOrder.IndexOf((MiscAttrAnimationOptions)optionIndex);
                 case ShaderOptionTypes.distortion:              return DistortionOrder.IndexOf((DistortionOptions)optionIndex);
-                case ShaderOptionTypes.warp:                    return WarpOrder.IndexOf((WarpOptions)optionIndex);
-                case ShaderOptionTypes.overlay:                 return OverlayOrder.IndexOf((OverlayOptions)optionIndex);
+                //case ShaderOptionTypes.warp:                    return WarpOrder.IndexOf((WarpOptions)optionIndex);
+                //case ShaderOptionTypes.overlay:                 return OverlayOrder.IndexOf((OverlayOptions)optionIndex);
                 case ShaderOptionTypes.soft_fade:               return SoftFadeOrder.IndexOf((SoftFadeOptions)optionIndex);
-                case ShaderOptionTypes.edge_fade:               return EdgeFadeOrder.IndexOf((EdgeFadeOptions)optionIndex);
-                case ShaderOptionTypes.wetness:                 return WetnessOrder.IndexOf((WetnessOptions)optionIndex);
-                case ShaderOptionTypes.alpha_blend_source:      return AlphaBlendSourceOrder.IndexOf((AlphaBlendSourceOptions)optionIndex);
+                //case ShaderOptionTypes.edge_fade:               return EdgeFadeOrder.IndexOf((EdgeFadeOptions)optionIndex);
+                //case ShaderOptionTypes.wetness:                 return WetnessOrder.IndexOf((WetnessOptions)optionIndex);
+                //case ShaderOptionTypes.alpha_blend_source:      return AlphaBlendSourceOrder.IndexOf((AlphaBlendSourceOptions)optionIndex);
                 default:                                        return 0;
             }
         }
@@ -323,11 +323,11 @@ namespace TagTool.Shaders.ShaderMatching
             result += $"Misc Attr Animation: {(MiscOptions)options[10]} \n";
             result += $"Distortion: {(DistortionOptions)options[11]} \n";
             result += $"Soft Fade: {(SoftFadeOptions)options[12]} \n";
-            result += $"Warp: {(WarpOptions)options[13]} \n";
-            result += $"Overlay: {(OverlayOptions)options[14]} \n";
-            result += $"Edge Fade: {(EdgeFadeOptions)options[15]} \n";
-            result += $"Wetness: {(WetnessOptions)options[16]} \n";
-            result += $"Alpha Blend Source: {(AlphaBlendSourceOptions)options[17]} \n";
+            //result += $"Warp: {(WarpOptions)options[13]} \n";
+            //result += $"Overlay: {(OverlayOptions)options[14]} \n";
+            //result += $"Edge Fade: {(EdgeFadeOptions)options[15]} \n";
+            //result += $"Wetness: {(WetnessOptions)options[16]} \n";
+            //result += $"Alpha Blend Source: {(AlphaBlendSourceOptions)options[17]} \n";
 
             return result;
         }

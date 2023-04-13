@@ -161,6 +161,7 @@ namespace TagTool.Shaders.ShaderMatching
             DecalSorter decalTemplateSorter = new DecalSorter();
             ScreenSorter screenTemplateSorter = new ScreenSorter();
             WaterSorter waterTemplateSorter = new WaterSorter();
+            //WetnessSorter wetnessTemplateSorter = new WetnessSorter();
 
             foreach (var rmt2Tag in BaseCache.TagCache.NonNull().Where(tag => tag.IsInGroup("rmt2")))
             {
@@ -249,6 +250,9 @@ namespace TagTool.Shaders.ShaderMatching
                     case "water":
                         ShaderTemplateValues.Add(rmt2Tag, Sorter.GetValue(waterTemplateSorter, Sorter.GetTemplateOptions(rmt2Tag.Name)));
                         break;
+                    //case "wetness":
+                    //    ShaderTemplateValues.Add(rmt2Tag, Sorter.GetValue(wetnessTemplateSorter, Sorter.GetTemplateOptions(rmt2Tag.Name)));
+                    //    break;
                 }
             }
 
@@ -292,6 +296,7 @@ namespace TagTool.Shaders.ShaderMatching
                 case "shader":          return GetBestTag(shaderTemplateSorter, ShaderTemplateValues, srcRmt2Tagname, sourceRmt2Tag.Name);
                 case "terrain":         return GetBestTag(terrainTemplateSorter, ShaderTemplateValues, srcRmt2Tagname, sourceRmt2Tag.Name);
                 case "water":           return GetBestTag(waterTemplateSorter, ShaderTemplateValues, srcRmt2Tagname, sourceRmt2Tag.Name);
+                //case "wetness":         return GetBestTag(wetnessTemplateSorter, ShaderTemplateValues, srcRmt2Tagname, sourceRmt2Tag.Name));
                 default:                return null;
             }
         }
@@ -638,6 +643,7 @@ namespace TagTool.Shaders.ShaderMatching
                         case "shader":          return new HaloShaderGenerator.Shader.ShaderGenerator(Options, applyFixes);
                         case "terrain":         return new HaloShaderGenerator.Terrain.TerrainGenerator(Options, applyFixes);
                         case "water":           return new HaloShaderGenerator.Water.WaterGenerator(Options, applyFixes);
+                        //case "wetness":         return new HaloShaderGenerator.Wetness.WetnessGenerator(Options, applyFixes); //Might work in ms30, testing needed
                         case "zonly":           return new HaloShaderGenerator.ZOnly.ZOnlyGenerator(Options, applyFixes);
                     }
 
