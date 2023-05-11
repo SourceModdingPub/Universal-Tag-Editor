@@ -100,8 +100,11 @@ namespace TagTool.Cache.Monolithic
             byte[] primaryData, secondaryData;
             ExtractResourceRaw(xsyncState, partitionBlock, out primaryData, out secondaryData);
 
-            var definitionData = xsyncState.ControlData.ToArray();
-            ApplyResourceDefinitionFixups(xsyncState.ControlFixups, definitionData);
+            byte[] definitionData = new byte[0];
+            if(xsyncState.Header.ControlDataSize > 0)
+                definitionData = xsyncState.ControlData.ToArray();
+            if(xsyncState.ControlFixups != null)
+                ApplyResourceDefinitionFixups(xsyncState.ControlFixups, definitionData);
 
             var definitionReader = new EndianReader(new MemoryStream(definitionData), Backend.Format);
             var primaryDataReader = new EndianReader(new MemoryStream(primaryData), Backend.Format);
